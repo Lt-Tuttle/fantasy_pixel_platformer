@@ -1,25 +1,45 @@
 [gd_scene format=3 uid="uid://dqvmbirvqyq5u"]
 
-[ext_resource type="Script" uid="uid://btlk004xbhepo" path="res://src/actors/player/player.gd" id="1_1x8di"]
+[ext_resource type="Script" uid="uid://btlk004xbhepo" path="res://src/actors/player/player_scripts/player_controller.gd" id="1_1x8di"]
 [ext_resource type="Texture2D" uid="uid://cahl4b7d8c515" path="res://src/actors/player/player_assets/idle_unarmed.png" id="2_1x8di"]
+[ext_resource type="AnimationLibrary" uid="uid://bkoonp6h8jk6j" path="res://src/actors/player/player_animation_library.tres" id="2_u8v1j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6llfm"]
 size = Vector2(7, 22)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_6llfm"]
+radius = 14.035668
+
 [node name="Player" type="CharacterBody2D" unique_id=903772753 groups=["Player"]]
+collision_layer = 2
+collision_mask = 29
 script = ExtResource("1_1x8di")
 
 [node name="HitBox" type="CollisionShape2D" parent="." unique_id=88095636]
 position = Vector2(0, 7)
 shape = SubResource("RectangleShape2D_6llfm")
 
-[node name="PlayerAnimations" type="AnimationPlayer" parent="." unique_id=1551016814]
+[node name="Animations" type="AnimationPlayer" parent="." unique_id=2084083771]
+libraries/player_animation_library = ExtResource("2_u8v1j")
 
 [node name="PivotNode" type="Node2D" parent="." unique_id=352797750]
 
-[node name="PlayerSprite" type="Sprite2D" parent="PivotNode" unique_id=375837016]
+[node name="Sprite" type="Sprite2D" parent="PivotNode" unique_id=375837016]
 texture = ExtResource("2_1x8di")
 hframes = 4
 
 [node name="WallCheck" type="RayCast2D" parent="PivotNode" unique_id=864562678]
 target_position = Vector2(20, 0)
+
+[node name="LedgeCheck" type="RayCast2D" parent="PivotNode" unique_id=1957912199]
+position = Vector2(0, -15)
+target_position = Vector2(20, 0)
+
+[node name="HurtBox" type="Area2D" parent="PivotNode" unique_id=759927987]
+collision_layer = 2
+collision_mask = 21
+
+[node name="HurtBoxCollision" type="CollisionShape2D" parent="PivotNode/HurtBox" unique_id=682181055]
+position = Vector2(20, 0)
+shape = SubResource("CircleShape2D_6llfm")
+disabled = true
