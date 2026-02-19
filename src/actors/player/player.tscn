@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://btlk004xbhepo" path="res://src/actors/player/player_scripts/player_controller.gd" id="1_1x8di"]
 [ext_resource type="Texture2D" uid="uid://cahl4b7d8c515" path="res://src/actors/player/player_assets/idle_unarmed.png" id="2_1x8di"]
 [ext_resource type="AnimationLibrary" uid="uid://bkoonp6h8jk6j" path="res://src/actors/player/player_animation_library.tres" id="2_u8v1j"]
+[ext_resource type="Script" uid="uid://cq804nkh6d1sl" path="res://src/actors/player/player_scripts/player_input.gd" id="3_hod3v"]
+[ext_resource type="Script" uid="uid://ca00w42ec365c" path="res://src/actors/player/player_scripts/player_movement.gd" id="4_dmu6e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6llfm"]
 size = Vector2(7, 22)
@@ -10,10 +12,18 @@ size = Vector2(7, 22)
 [sub_resource type="CircleShape2D" id="CircleShape2D_6llfm"]
 radius = 14.035668
 
-[node name="Player" type="CharacterBody2D" unique_id=903772753 groups=["Player"]]
+[node name="Player" type="CharacterBody2D" unique_id=903772753 node_paths=PackedStringArray("animation_player", "movement", "input", "sprite") groups=["Player"]]
 collision_layer = 2
 collision_mask = 29
 script = ExtResource("1_1x8di")
+animation_player = NodePath("Animations")
+movement = NodePath("PlayerMovement")
+input = NodePath("PlayerInput")
+sprite = NodePath("PivotNode/Sprite")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1575148035]
+position = Vector2(0, -50)
+zoom = Vector2(2.5, 2.5)
 
 [node name="HitBox" type="CollisionShape2D" parent="." unique_id=88095636]
 position = Vector2(0, 7)
@@ -21,6 +31,14 @@ shape = SubResource("RectangleShape2D_6llfm")
 
 [node name="Animations" type="AnimationPlayer" parent="." unique_id=2084083771]
 libraries/player_animation_library = ExtResource("2_u8v1j")
+
+[node name="PlayerInput" type="Node" parent="." unique_id=1881664957]
+script = ExtResource("3_hod3v")
+metadata/_custom_type_script = "uid://cq804nkh6d1sl"
+
+[node name="PlayerMovement" type="Node" parent="." unique_id=2156999]
+script = ExtResource("4_dmu6e")
+metadata/_custom_type_script = "uid://ca00w42ec365c"
 
 [node name="PivotNode" type="Node2D" parent="." unique_id=352797750]
 

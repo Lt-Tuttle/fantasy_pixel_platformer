@@ -11,7 +11,12 @@ config_version=5
 [application]
 
 config/name="fantasy_pixel_platformer"
+run/main_scene="uid://comjqxx3uk14f"
 config/features=PackedStringArray("4.6", "GL Compatibility")
+
+[display]
+
+window/size/mode=1
 
 [global_group]
 
