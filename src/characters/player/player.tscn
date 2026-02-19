@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dqvmbirvqyq5u"]
 
 [ext_resource type="Script" uid="uid://btlk004xbhepo" path="res://src/characters/player/player_controller.gd" id="1_1x8di"]
-[ext_resource type="Texture2D" uid="uid://by84s3u3bo0wk" path="res://src/characters/player/run_unarmed.png" id="2_dmu6e"]
+[ext_resource type="Texture2D" uid="uid://by84s3u3bo0wk" path="res://src/characters/player/player_assets/run_unarmed.png" id="2_dmu6e"]
 [ext_resource type="AnimationLibrary" uid="uid://bkoonp6h8jk6j" path="res://src/characters/player/player_animation_library.tres" id="2_u8v1j"]
 [ext_resource type="Script" uid="uid://cq804nkh6d1sl" path="res://src/characters/player/player_input.gd" id="3_hod3v"]
 [ext_resource type="Script" uid="uid://ca00w42ec365c" path="res://src/characters/player/player_movement.gd" id="4_dmu6e"]

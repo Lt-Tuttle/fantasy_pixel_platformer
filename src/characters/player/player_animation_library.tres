@@ -1,13 +1,13 @@
 [gd_resource type="AnimationLibrary" format=3 uid="uid://bkoonp6h8jk6j"]
 
-[ext_resource type="Texture2D" uid="uid://dvqm8gfi5mvcb" path="res://src/characters/player/attack_1.png" id="1_68vkd"]
-[ext_resource type="Texture2D" uid="uid://cahl4b7d8c515" path="res://src/characters/player/idle_unarmed.png" id="1_86ibv"]
-[ext_resource type="Texture2D" uid="uid://b8in666kac3oq" path="res://src/characters/player/fall_loop.png" id="1_xex1a"]
-[ext_resource type="Texture2D" uid="uid://b6p77y00smiof" path="res://src/characters/player/jump.png" id="2_dc8ai"]
-[ext_resource type="Texture2D" uid="uid://b33axdr68sau7" path="res://src/characters/player/attack_2.png" id="2_xtolc"]
-[ext_resource type="Texture2D" uid="uid://cld8ptdlq7ceb" path="res://src/characters/player/attack_3.png" id="3_kk5ac"]
-[ext_resource type="Texture2D" uid="uid://by84s3u3bo0wk" path="res://src/characters/player/run_unarmed.png" id="3_xex1a"]
-[ext_resource type="Texture2D" uid="uid://djvpj5y4x82au" path="res://src/characters/player/somersault.png" id="5_tytoy"]
+[ext_resource type="Texture2D" uid="uid://dvqm8gfi5mvcb" path="res://src/characters/player/player_assets/attack_1.png" id="1_0ligy"]
+[ext_resource type="Texture2D" uid="uid://b33axdr68sau7" path="res://src/characters/player/player_assets/attack_2.png" id="2_2knvp"]
+[ext_resource type="Texture2D" uid="uid://cld8ptdlq7ceb" path="res://src/characters/player/player_assets/attack_3.png" id="3_b7igh"]
+[ext_resource type="Texture2D" uid="uid://b8in666kac3oq" path="res://src/characters/player/player_assets/fall_loop.png" id="4_beo01"]
+[ext_resource type="Texture2D" uid="uid://cahl4b7d8c515" path="res://src/characters/player/player_assets/idle_unarmed.png" id="5_e2w1y"]
+[ext_resource type="Texture2D" uid="uid://b6p77y00smiof" path="res://src/characters/player/player_assets/jump.png" id="6_msudf"]
+[ext_resource type="Texture2D" uid="uid://by84s3u3bo0wk" path="res://src/characters/player/player_assets/run_unarmed.png" id="7_mwmf4"]
+[ext_resource type="Texture2D" uid="uid://djvpj5y4x82au" path="res://src/characters/player/player_assets/somersault.png" id="8_23pfu"]
 
 [sub_resource type="Animation" id="Animation_6awri"]
 resource_name = "attack1"
@@ -23,7 +23,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("1_68vkd")]
+"values": [ExtResource("1_0ligy")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -105,7 +105,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_xtolc")]
+"values": [ExtResource("2_2knvp")]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -175,7 +175,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_kk5ac")]
+"values": [ExtResource("3_b7igh")]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -217,7 +217,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("1_xex1a")]
+"values": [ExtResource("4_beo01")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -258,7 +258,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("1_86ibv")]
+"values": [ExtResource("5_e2w1y")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -299,7 +299,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_dc8ai")]
+"values": [ExtResource("6_msudf")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -341,7 +341,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_xex1a")]
+"values": [ExtResource("7_mwmf4")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -382,7 +382,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("5_tytoy")]
+"values": [ExtResource("8_23pfu")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
