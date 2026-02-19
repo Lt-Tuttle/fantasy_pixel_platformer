@@ -14,7 +14,7 @@ class_name PlayerMovement
 #Local Variables
 var direction: Vector2 = Vector2.ZERO
 
-func move(delta: float) -> void:
+func update(delta: float) -> void:
 	if not player: return
 
 	direction = player.input.direction
@@ -22,11 +22,6 @@ func move(delta: float) -> void:
 	player.velocity.x = direction.x * speed
 	player.velocity.y += gravity * delta
 
-	#TODO: figure out where to handle jump listening, which script should be calling out actions for movement and animations
-	#if player.input.jump:
-	#	jump()
-	#	player.input.jump = false
-		
 	player.move_and_slide()
 
 func jump(jump_force_multiplier: float = 1.0) -> void:

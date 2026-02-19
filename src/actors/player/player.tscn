@@ -5,7 +5,10 @@
 [ext_resource type="AnimationLibrary" uid="uid://bkoonp6h8jk6j" path="res://src/actors/player/player_animation_library.tres" id="2_u8v1j"]
 [ext_resource type="Script" uid="uid://cq804nkh6d1sl" path="res://src/actors/player/player_scripts/player_input.gd" id="3_hod3v"]
 [ext_resource type="Script" uid="uid://ca00w42ec365c" path="res://src/actors/player/player_scripts/player_movement.gd" id="4_dmu6e"]
-[ext_resource type="Script" uid="uid://b8dnugl5ut8g8" path="res://src/actors/player/player_scripts/player_state_machine.gd" id="5_dmu6e"]
+[ext_resource type="Script" uid="uid://b8dnugl5ut8g8" path="res://src/actors/player/player_scripts/player_state_machine/player_state_machine.gd" id="5_dmu6e"]
+[ext_resource type="Script" uid="uid://cr0uo13c3ybay" path="res://src/actors/player/player_scripts/player_state_machine/state_air.gd" id="7_nq65r"]
+[ext_resource type="Script" uid="uid://buv6cffvbvo2t" path="res://src/actors/player/player_scripts/player_state_machine/state_attack.gd" id="8_wabo4"]
+[ext_resource type="Script" uid="uid://elt5p4fwiubr" path="res://src/actors/player/player_scripts/player_state_machine/state_ground.gd" id="9_b2jwx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6llfm"]
 size = Vector2(7, 22)
@@ -57,7 +60,7 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_6llfm"]
 radius = 14.035668
 
-[node name="Player" type="CharacterBody2D" unique_id=903772753 node_paths=PackedStringArray("animation", "movement", "input", "sprite", "state_machine", "hurtbox", "hitbox", "pivot") groups=["Player"]]
+[node name="Player" type="CharacterBody2D" unique_id=903772753 node_paths=PackedStringArray("animation", "movement", "input", "sprite", "state_machine", "hurtbox", "hitbox", "pivot", "debug_label") groups=["Player"]]
 collision_layer = 2
 collision_mask = 29
 script = ExtResource("1_1x8di")
@@ -69,6 +72,16 @@ state_machine = NodePath("PlayerStateMachine")
 hurtbox = NodePath("PivotNode/HurtBox")
 hitbox = NodePath("PivotNode/HurtBox")
 pivot = NodePath("PivotNode")
+debug_label = NodePath("Debug Label")
+
+[node name="Debug Label" type="Label" parent="." unique_id=641337821]
+offset_left = -20.0
+offset_top = -25.0
+offset_right = 20.0
+offset_bottom = -13.0
+theme_override_font_sizes/font_size = 8
+text = "TEST"
+horizontal_alignment = 1
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1575148035]
 position = Vector2(0, -50)
@@ -92,9 +105,27 @@ script = ExtResource("4_dmu6e")
 player = NodePath("..")
 metadata/_custom_type_script = "uid://ca00w42ec365c"
 
-[node name="PlayerStateMachine" type="Node" parent="." unique_id=1830365764 node_paths=PackedStringArray("player")]
+[node name="PlayerStateMachine" type="Node" parent="." unique_id=1830365764 node_paths=PackedStringArray("player", "state_ground", "state_air", "state_attack")]
 script = ExtResource("5_dmu6e")
 player = NodePath("..")
+state_ground = NodePath("StateGround")
+state_air = NodePath("StateAir")
+state_attack = NodePath("StateAttack")
+
+[node name="StateAir" type="Node" parent="PlayerStateMachine" unique_id=1794199065 node_paths=PackedStringArray("player")]
+script = ExtResource("7_nq65r")
+player = NodePath("../..")
+metadata/_custom_type_script = "uid://cr0uo13c3ybay"
+
+[node name="StateAttack" type="Node" parent="PlayerStateMachine" unique_id=2122577560 node_paths=PackedStringArray("player")]
+script = ExtResource("8_wabo4")
+player = NodePath("../..")
+metadata/_custom_type_script = "uid://buv6cffvbvo2t"
+
+[node name="StateGround" type="Node" parent="PlayerStateMachine" unique_id=623578108 node_paths=PackedStringArray("player")]
+script = ExtResource("9_b2jwx")
+player = NodePath("../..")
+metadata/_custom_type_script = "uid://elt5p4fwiubr"
 
 [node name="PivotNode" type="Node2D" parent="." unique_id=352797750]
 
