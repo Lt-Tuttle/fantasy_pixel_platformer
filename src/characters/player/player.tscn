@@ -18,7 +18,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PivotNode/Sprite:texture")
+tracks/0/path = NodePath("PivotNode/Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -30,7 +30,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PivotNode/Sprite:hframes")
+tracks/1/path = NodePath("PivotNode/Sprite2D:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -42,7 +42,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("PivotNode/Sprite:frame")
+tracks/2/path = NodePath("PivotNode/Sprite2D:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -79,7 +79,7 @@ script = ExtResource("1_1x8di")
 animation = NodePath("Animations")
 movement = NodePath("PlayerMovement")
 input = NodePath("PlayerInput")
-sprite = NodePath("PivotNode/Sprite")
+sprite = NodePath("PivotNode/Sprite2D")
 state_machine = NodePath("PlayerStateMachine")
 hurtbox = NodePath("PivotNode/HurtBox")
 hitbox = NodePath("PivotNode/HurtBox")
@@ -142,7 +142,7 @@ metadata/_custom_type_script = "uid://elt5p4fwiubr"
 
 [node name="PivotNode" type="Node2D" parent="." unique_id=352797750]
 
-[node name="Sprite" type="Sprite2D" parent="PivotNode" unique_id=375837016]
+[node name="Sprite2D" type="Sprite2D" parent="PivotNode" unique_id=375837016]
 texture = ExtResource("2_dmu6e")
 hframes = 6
 
