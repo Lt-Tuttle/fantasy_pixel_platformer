@@ -63,6 +63,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PivotNode/AirAttackHurtBox/AirAttackHurtBoxCollision:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qdy1o"]
 _data = {
@@ -71,6 +83,10 @@ _data = {
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6llfm"]
 radius = 14.035668
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6m51j"]
+radius = 7.0
+height = 44.0
 
 [node name="Player" type="CharacterBody2D" unique_id=903772753 node_paths=PackedStringArray("animation", "movement", "input", "sprite", "state_machine", "hurtbox", "hitbox", "pivot", "debug_label") groups=["Player"]]
 collision_layer = 2
@@ -160,3 +176,10 @@ collision_mask = 21
 [node name="HurtBoxCollision" type="CollisionShape2D" parent="PivotNode/HurtBox" unique_id=682181055]
 position = Vector2(20, 0)
 shape = SubResource("CircleShape2D_6llfm")
+
+[node name="AirAttackHurtBox" type="Area2D" parent="PivotNode" unique_id=857753014]
+
+[node name="AirAttackHurtBoxCollision" type="CollisionShape2D" parent="PivotNode/AirAttackHurtBox" unique_id=1114724991]
+position = Vector2(0, 15)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_6m51j")
