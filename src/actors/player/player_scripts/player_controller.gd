@@ -47,21 +47,22 @@ func _physics_process(delta: float) -> void:
 	# Update debug label
 	debug_label.text = state_machine.current_state.name
 
+
 func process_inputs() -> void:
 	# If the player enters the air state from the ground state, enable double jump
 	if current_state == air_state and previous_state == ground_state:
 		double_jump_available = true
 
 	# Handle jump input
-	if input.jump and is_on_floor():
+	if input.jump and is_on_floor() and not state_machine.state_lock:
 		movement.jump()
 		state_machine.change_state(air_state)
-	elif input.jump and not is_on_floor() and double_jump_available:
+	elif input.jump and not is_on_floor() and double_jump_available and not state_machine.state_lock:
 		state_machine.state_lock = false
 		movement.jump(0.85) # Double jump
 		state_machine.change_state(air_state)
 		double_jump_available = false
 
 	# Handle attack input
-	if input.attack and current_state != attack_state and is_on_floor():
+	if input.attack and current_state != attack_state and is_on_floor() and not state_machine.state_lock:
 		state_machine.change_state(attack_state)

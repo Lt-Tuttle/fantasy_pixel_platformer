@@ -1,5 +1,5 @@
-extends Node
 class_name PlayerMovement
+extends Node
 
 # References
 @export_category("References")
@@ -24,6 +24,7 @@ func update(delta: float) -> void:
 
 	# Move the player
 	player.move_and_slide()
+
 
 func jump(jump_force_multiplier: float = 1.0) -> void:
 	# Apply jump force

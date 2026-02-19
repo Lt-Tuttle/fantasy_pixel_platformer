@@ -17,9 +17,11 @@ func _ready() -> void:
 	current_state = state_ground
 	current_state.enter()
 
+
 func update(delta: float) -> void:
 	check_facing()
 	current_state.update(delta)
+
 
 func change_state(new_state: Node) -> void:
 	if state_lock: return
@@ -28,6 +30,7 @@ func change_state(new_state: Node) -> void:
 	previous_state = current_state
 	current_state = new_state
 	current_state.enter()
+
 
 func check_facing() -> void:
 	if player.pivot.scale.x != sign(player.velocity.x) and player.velocity.x != 0:

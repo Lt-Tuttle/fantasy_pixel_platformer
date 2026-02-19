@@ -84,9 +84,9 @@ state_machine = NodePath("PlayerStateMachine")
 hurtbox = NodePath("PivotNode/HurtBox")
 hitbox = NodePath("PivotNode/HurtBox")
 pivot = NodePath("PivotNode")
-debug_label = NodePath("Debug Label")
+debug_label = NodePath("DebugLabel")
 
-[node name="Debug Label" type="Label" parent="." unique_id=641337821]
+[node name="DebugLabel" type="Label" parent="." unique_id=641337821]
 offset_left = -27.0
 offset_top = -30.0
 offset_right = 27.0

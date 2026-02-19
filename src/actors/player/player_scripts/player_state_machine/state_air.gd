@@ -1,5 +1,5 @@
-extends Node
 class_name StateAir
+extends Node
 
 # References
 @export_category("References")
@@ -17,9 +17,11 @@ func enter() -> void:
 	else:
 		player.animation.play(GameConstants.ANIMS["PLAYER_ANIM_JUMP"])
 
+
 func exit() -> void:
 	# Unlock state
 	player.state_machine.state_lock = false
+
 
 func update(_delta: float) -> void:
 	# Check if player is on floor
