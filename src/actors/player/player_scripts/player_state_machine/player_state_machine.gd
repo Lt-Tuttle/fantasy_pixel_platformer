@@ -1,11 +1,14 @@
 extends Node
 class_name PlayerStateMachine
 
+# References
+@export_category("References")
 @export var player: PlayerController
 @export var state_ground: StateGround
 @export var state_air: StateAir
 @export var state_attack: StateAttack
 
+# Local Variables
 var current_state: Node
 var previous_state: Node
 var state_lock: bool = false
