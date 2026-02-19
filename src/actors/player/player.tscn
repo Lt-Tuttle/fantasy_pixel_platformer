@@ -1,25 +1,74 @@
 [gd_scene format=3 uid="uid://dqvmbirvqyq5u"]
 
 [ext_resource type="Script" uid="uid://btlk004xbhepo" path="res://src/actors/player/player_scripts/player_controller.gd" id="1_1x8di"]
-[ext_resource type="Texture2D" uid="uid://cahl4b7d8c515" path="res://src/actors/player/player_assets/idle_unarmed.png" id="2_1x8di"]
+[ext_resource type="Texture2D" uid="uid://by84s3u3bo0wk" path="res://src/actors/player/player_assets/run_unarmed.png" id="2_dmu6e"]
 [ext_resource type="AnimationLibrary" uid="uid://bkoonp6h8jk6j" path="res://src/actors/player/player_animation_library.tres" id="2_u8v1j"]
 [ext_resource type="Script" uid="uid://cq804nkh6d1sl" path="res://src/actors/player/player_scripts/player_input.gd" id="3_hod3v"]
 [ext_resource type="Script" uid="uid://ca00w42ec365c" path="res://src/actors/player/player_scripts/player_movement.gd" id="4_dmu6e"]
+[ext_resource type="Script" uid="uid://b8dnugl5ut8g8" path="res://src/actors/player/player_scripts/player_state_machine.gd" id="5_dmu6e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6llfm"]
 size = Vector2(7, 22)
 
+[sub_resource type="Animation" id="Animation_8tnyb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PivotNode/Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_dmu6e")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PivotNode/Sprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PivotNode/Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qdy1o"]
+_data = {
+&"RESET": SubResource("Animation_8tnyb")
+}
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_6llfm"]
 radius = 14.035668
 
-[node name="Player" type="CharacterBody2D" unique_id=903772753 node_paths=PackedStringArray("animation_player", "movement", "input", "sprite") groups=["Player"]]
+[node name="Player" type="CharacterBody2D" unique_id=903772753 node_paths=PackedStringArray("animation", "movement", "input", "sprite", "state_machine", "hurtbox", "hitbox", "pivot") groups=["Player"]]
 collision_layer = 2
 collision_mask = 29
 script = ExtResource("1_1x8di")
-animation_player = NodePath("Animations")
+animation = NodePath("Animations")
 movement = NodePath("PlayerMovement")
 input = NodePath("PlayerInput")
 sprite = NodePath("PivotNode/Sprite")
+state_machine = NodePath("PlayerStateMachine")
+hurtbox = NodePath("PivotNode/HurtBox")
+hitbox = NodePath("PivotNode/HurtBox")
+pivot = NodePath("PivotNode")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1575148035]
 position = Vector2(0, -50)
@@ -30,21 +79,28 @@ position = Vector2(0, 7)
 shape = SubResource("RectangleShape2D_6llfm")
 
 [node name="Animations" type="AnimationPlayer" parent="." unique_id=2084083771]
+libraries/ = SubResource("AnimationLibrary_qdy1o")
 libraries/player_animation_library = ExtResource("2_u8v1j")
 
-[node name="PlayerInput" type="Node" parent="." unique_id=1881664957]
+[node name="PlayerInput" type="Node" parent="." unique_id=1881664957 node_paths=PackedStringArray("player")]
 script = ExtResource("3_hod3v")
+player = NodePath("..")
 metadata/_custom_type_script = "uid://cq804nkh6d1sl"
 
-[node name="PlayerMovement" type="Node" parent="." unique_id=2156999]
+[node name="PlayerMovement" type="Node" parent="." unique_id=2156999 node_paths=PackedStringArray("player")]
 script = ExtResource("4_dmu6e")
+player = NodePath("..")
 metadata/_custom_type_script = "uid://ca00w42ec365c"
+
+[node name="PlayerStateMachine" type="Node" parent="." unique_id=1830365764 node_paths=PackedStringArray("player")]
+script = ExtResource("5_dmu6e")
+player = NodePath("..")
 
 [node name="PivotNode" type="Node2D" parent="." unique_id=352797750]
 
 [node name="Sprite" type="Sprite2D" parent="PivotNode" unique_id=375837016]
-texture = ExtResource("2_1x8di")
-hframes = 4
+texture = ExtResource("2_dmu6e")
+hframes = 6
 
 [node name="WallCheck" type="RayCast2D" parent="PivotNode" unique_id=864562678]
 target_position = Vector2(20, 0)

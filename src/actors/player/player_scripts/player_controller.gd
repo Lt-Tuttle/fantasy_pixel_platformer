@@ -1,18 +1,17 @@
 class_name PlayerController
 extends CharacterBody2D
 
-@export var animation_player: AnimationPlayer
+@export var animation: AnimationPlayer
 @export var movement: PlayerMovement
 @export var input: PlayerInput
 @export var sprite: Sprite2D
+@export var state_machine: PlayerStateMachine
+@export var hurtbox: Area2D
+@export var hitbox: Area2D
+@export var pivot: Node2D
 
-
-func _ready() -> void:
-	if movement:
-		movement.player = self
-	if input:
-		input.player = self
 
 func _physics_process(delta: float) -> void:
 	input.update()
+	state_machine.update()
 	movement.move(delta)
