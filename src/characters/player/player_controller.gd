@@ -64,5 +64,5 @@ func process_inputs() -> void:
 		double_jump_available = false
 
 	# Handle attack input
-	if input.attack and current_state != attack_state and is_on_floor() and not state_machine.state_lock:
+	if input.attack and current_state != attack_state and not state_machine.state_lock:
 		state_machine.change_state(attack_state)
